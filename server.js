@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const fs = require('fs');
 
 app.use('/', express.static('public'));
 
@@ -26,7 +27,7 @@ app.get('/hello', (req, res) => {
 });
 
 app.get('/budget', (req, res) => {
-    res.json(budget);
+    res.json(JSON.parse(fs.readFileSync('./myBudget.json', 'utf-8')));
 });
 
 app.listen(port, () => {
