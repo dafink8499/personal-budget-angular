@@ -2,8 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Chart, controllers } from 'chart.js';
 import * as d3 from 'd3';
-import { scaleIdentity, scaleOrdinal } from 'd3';
-import { arc, pie } from 'd3';
+import { color, scaleIdentity, scaleOrdinal } from 'd3';
 import { DataService } from '../data.service';
 
 @Component({
@@ -76,7 +75,6 @@ export class HomepageComponent implements AfterViewInit {
     const labelArea = d3.arc().innerRadius(radius * 0.9).outerRadius(radius * 0.9);
 
     slice.enter().append('text').text(this.service.d3labels[0]).attr("transform", d => "translate(" + labelArea.centroid(d) + ")").style("text-anchor", "middle").style("font-size", 12);
-
 
 
   }
